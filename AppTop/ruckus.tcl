@@ -34,6 +34,9 @@ if { $::env(PRJ_PART) == "XCKU040-FFVA1156-2-E" } {
    loadSource  -path "$::DIR_PATH/coregen/xcku060/JesdCryoCoreRightColumn/JesdCryoCoreRightColumn.dcp"
    #loadIpCore -path "$::DIR_PATH/coregen/xcku060/JesdCryoCoreRightColumn/JesdCryoCoreRightColumn.xci"   
 
+   loadSource  -path "$::DIR_PATH/coregen/adi_jesd/axi_jesd204_rx_0.dcp"
+   loadSource  -path "$::DIR_PATH/coregen/adi_jesd/jesd204_rx_0.dcp"
+
 } elseif {  $::env(PRJ_PART) eq {XCKU11P-FFVA1156-2-E} ||
             $::env(PRJ_PART) eq {XCKU15P-FFVA1156-2-E} } {
             

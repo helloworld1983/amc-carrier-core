@@ -90,17 +90,17 @@ class AppTop(pr.Device):
         @self.command(description  = "AppTop Init() cmd")        
         def Init():
             # Get devices
-            jesdRxDevices = self.find(typ=jesd.JesdRx)
+            #jesdRxDevices = self.find(typ=jesd.JesdRx)
             jesdTxDevices = self.find(typ=jesd.JesdTx)
             lmkDevices    = self.find(typ=ti.Lmk04828)
             dacDevices    = self.find(typ=ti.Dac38J84)
             sigGenDevices = self.find(typ=DacSigGen)
             
             # Assert GTs Reset
-            for rx in jesdRxDevices: 
-                rx.ResetGTs.set(1)
+            #for rx in jesdRxDevices: 
+            #    rx.ResetGTs.set(1)
             for tx in jesdTxDevices: 
-                rx.ResetGTs.set(1)          
+                tx.ResetGTs.set(1)          
             # Power down sysref
             for lmk in lmkDevices: 
                 enable = lmk.enable.get()
@@ -110,8 +110,8 @@ class AppTop(pr.Device):
             self.checkBlocks(recurse=True)
             time.sleep(1.0)
             # Reset the GTs
-            for rx in jesdRxDevices: 
-                rx.ResetGTs.set(0)
+            #for rx in jesdRxDevices: 
+            #    rx.ResetGTs.set(0)
             for tx in jesdTxDevices: 
                 tx.ResetGTs.set(0)
             self.checkBlocks(recurse=True)
@@ -132,8 +132,8 @@ class AppTop(pr.Device):
             # Wait for the system settle
             time.sleep(0.5)            
             # Clear all error counters
-            for rx in jesdRxDevices: 
-                rx.CmdClearErrors()  
+            #for rx in jesdRxDevices: 
+            #    rx.CmdClearErrors()  
             for tx in jesdTxDevices: 
                 tx.CmdClearErrors()
             for dac in dacDevices: 

@@ -21,6 +21,7 @@ import pyrogue as pr
 
 import surf.xilinx as xil
 import surf.protocols.jesd204b as jesd
+import AppTop.ADIJesdRx as jesdRx
 
 class AppTopJesd(pr.Device):
     def __init__(   self, 
@@ -37,7 +38,7 @@ class AppTopJesd(pr.Device):
         # Variables
         ##############################
         if (numRxLanes > 0):
-            self.add(jesd.JesdRx(
+            self.add(jesdRx.ADIJesdRx(
                 offset       = 0x00000000,
                 numRxLanes   = numRxLanes,
                 expand       = expand,

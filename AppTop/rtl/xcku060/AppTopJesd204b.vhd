@@ -223,7 +223,8 @@ architecture mapping of AppTopJesd204b is
 
    signal r_jesdGtRxArr : jesdGtRxLaneTypeArray(9 downto 0) := (others => JESD_GT_RX_LANE_INIT_C);
    signal r_jesdGtTxArr : jesdGtTxLaneTypeArray(9 downto 0) := (others => JESD_GT_TX_LANE_INIT_C);
-
+   signal s_phyEnCharAlign : sl;
+ 
    signal s_gtRxUserReset : slv(9 downto 0) := (others => '0');
    signal s_gtRxReset     : sl              := '0';
    signal s_gtTxUserReset : slv(9 downto 0) := (others => '0');
@@ -288,7 +289,7 @@ begin
    -- JESD RX core
    ---------------
    EN_RX_CORE : if (JESD_RX_LANE_G /= 0) generate
-      U_Jesd204bRx : entity work.Jesd204bRx
+      U_Jesd204bRx : entity work.ADIJesd204bRx
          generic map (
             TPD_G => TPD_G,
             F_G   => 2,
@@ -306,6 +307,7 @@ begin
             sysRef_i        => s_sysRef,
             sysRefDbg_o     => s_sysRefDbg,
             r_jesdGtRxArr   => r_jesdGtRxArr(JESD_RX_LANE_G-1 downto 0),
+            phyEnCharAlign  => s_phyEnCharAlign,
             gtRxReset_o     => s_gtRxUserReset(JESD_RX_LANE_G-1 downto 0),
             sampleDataArr_o => s_sampleDataArr(JESD_RX_LANE_G-1 downto 0),
             dataValidVec_o  => s_dataValidVec(JESD_RX_LANE_G-1 downto 0),
@@ -422,12 +424,18 @@ begin
 
       gtRxPd((i*2)+1 downto i*2) <= rxPowerDown(i) & rxPowerDown(i);
 
-      process(devClk_i)
-      begin
-         if rising_edge(devClk_i) then
-            s_allignEnVec(i) <= not(s_dataValidVec(i)) after TPD_G;
-         end if;
-      end process;
+
+
+
+      U_GEN_ALIGN : for i in 9 downto 0 generate
+         s_allignEnVec(i) <= s_phyEnCharAlign;
+      end generate U_GEN_ALIGN;
+--      process(devClk_i)
+--      begin
+--         if rising_edge(devClk_i) then
+--            s_allignEnVec(i) <= not(s_dataValidVec(i)) after TPD_G;
+--         end if;
+--      end process;
 
    end generate RX_LANES_GEN;
 
@@ -454,8 +462,8 @@ begin
             gtwiz_reset_all_in(0)                 => s_gtResetAll,
             gtwiz_reset_tx_pll_and_datapath_in(0) => s_gtTxReset,
             gtwiz_reset_tx_datapath_in(0)         => s_gtTxReset,
-            gtwiz_reset_rx_pll_and_datapath_in(0) => s_gtRxReset,
-            gtwiz_reset_rx_datapath_in(0)         => s_gtRxReset,
+            gtwiz_reset_rx_pll_and_datapath_in(0) => s_gtTxReset,
+            gtwiz_reset_rx_datapath_in(0)         => s_gtTxReset,
             gtwiz_reset_rx_cdr_stable_out(0)      => s_cdrStable(0),
             gtwiz_reset_tx_done_out(0)            => s_txDone(0),
             gtwiz_reset_rx_done_out(0)            => s_rxDone(0),
@@ -519,8 +527,8 @@ begin
             gtwiz_reset_all_in(0)                 => s_gtResetAll,
             gtwiz_reset_tx_pll_and_datapath_in(0) => s_gtTxReset,
             gtwiz_reset_tx_datapath_in(0)         => s_gtTxReset,
-            gtwiz_reset_rx_pll_and_datapath_in(0) => s_gtRxReset,
-            gtwiz_reset_rx_datapath_in(0)         => s_gtRxReset,
+            gtwiz_reset_rx_pll_and_datapath_in(0) => s_gtTxReset,
+            gtwiz_reset_rx_datapath_in(0)         => s_gtTxReset,
             gtwiz_reset_rx_cdr_stable_out(0)      => s_cdrStable(1),
             gtwiz_reset_tx_done_out(0)            => s_txDone(1),
             gtwiz_reset_rx_done_out(0)            => s_rxDone(1),
