@@ -317,6 +317,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RO",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_IFS_READY[%d]'%i),
                     description  = "Frame synchronization state",
@@ -326,6 +327,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RO",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_ILAS_READY[%d]'%i),
                     description  = "ILAS configuration data received",
@@ -335,6 +337,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RO",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_LATENCY[%d]'%i),
                     description  = "Lane latency in octets",
@@ -344,15 +347,17 @@ class ADIJesdRx(pr.Device):
                     mode         = "RO",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_ERRORS[%d]'%i),
                     description  = "Total errors for this lane.  It must always be manually reset",
-                    offset       =  0x318 + 0x20*i,
+                    offset       =  0x308 + 0x20*i,
                     bitSize      =  32,
                     bitOffset    =  0,
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_DID[%d]'%i),
                     description  = "Device ID field of the ILAS config sequence",
@@ -362,6 +367,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_BID[%d]'%i),
                     description  = "Bank ID field of the ILAS config sequence",
@@ -371,6 +377,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_LID[%d]'%i),
                     description  = "Lane ID field of the ILAS config sequence",
@@ -380,6 +387,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_L[%d]'%i),
                     description  = "Number of lanes field in the ILAS config sequence",
@@ -389,6 +397,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_SCR[%d]'%i),
                     description  = "Scrambling enabled field of the ILAS config sequence",
@@ -398,6 +407,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_F[%d]'%i),
                     description  = "Octets per frame field of the ILAS config sequence",
@@ -407,6 +417,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_K[%d]'%i),
                     description  = "Frames per multiframe field of the ILAS config sequence",
@@ -416,6 +427,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_M[%d]'%i),
                     description  = "Number of converters field of the ILAS config sequence",
@@ -425,6 +437,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_N[%d]'%i),
                     description  = "Converter resolution field of the ILAS config sequence",
@@ -434,6 +447,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_CS[%d]'%i),
                     description  = "Control bits per sample field of the ILAS config sequence",
@@ -443,6 +457,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_NP[%d]'%i),
                     description  = "Total number of bits per sample field of the ILAS config sequence",
@@ -452,6 +467,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_SUBCLASSV[%d]'%i),
                     description  = "Subclass field of the ILAS config sequence",
@@ -461,6 +477,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_S[%d]'%i),
                     description  = "Samples per frame field of the ILAS config sequence",
@@ -470,6 +487,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_JESDV[%d]'%i),
                     description  = "JESD204 version field of the ILAS config sequence",
@@ -479,6 +497,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_CF[%d]'%i),
                     description  = "Control words per frame field of the ILAS config sequence",
@@ -488,6 +507,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RO",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_HD[%d]'%i),
                     description  = "High density field of the ILAS config sequence",
@@ -497,6 +517,7 @@ class ADIJesdRx(pr.Device):
                     mode         = "RW",
                 ))
     
+            for i in range(0, 10):
                 self.add(pr.RemoteVariable(    
                     name         = ('LANE_FCHK[%d]'%i),
                     description  = "Checksum field of the ILAS config sequence",
