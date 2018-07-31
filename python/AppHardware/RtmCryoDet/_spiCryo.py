@@ -26,41 +26,20 @@ class SpiCryo(pr.Device):
             **kwargs):
         super().__init__(name=name, description=description, **kwargs)
 
-        for i in range(2048):
-            self.add(pr.RemoteVariable(
-                name    = ('data[%d]'%i),
-                offset  = (i*0x4),
-                bitSize = 20,
-                base    = pr.UInt,
-                mode    = "RW",
-                hidden  = True,
-            ))
-
-        self.add(pr.LocalVariable(
-            name        = "data",
-            description = "data - 20 bits",
-            mode        = "RW",
-            value       = 0,
-            typeStr     = "Int20",
+        self.add(pr.RemoteVariable(
+            name        = "write",
+            description = "write - 32 bits",
+            offset      = 0x0,
+            bitSize     = 32,
+            base        = pr.UInt,
+            mode        = "WO",
         ))
-
-        self.add(pr.LocalVariable(
-            name        = "addr",
-            description = "address - 11 bits",
-            mode        = "RW",
-            value       = 0,
-            typeStr     = "Int11",
+        
+        self.add(pr.RemoteVariable(
+            name        = "read",
+            description = "read - 32 bits",
+            offset      = 0x0,
+            bitSize     = 32,
+            base        = pr.UInt,
+            mode        = "RO",
         ))
-
-        @self.command(description="read",)
-        def read():
-            addr = self.addr.get()
-            self._rawWrite( (addr << 2), 0 )
-            read = self._rawRead( (addr << 2) ) & 0x1FFF
-            self.data.set( read )
-
-        @self.command(description="write",)
-        def write():
-            addr = self.addr.get()
-            data = self.data.get()
-            self._rawWrite( (addr << 2), data )            
