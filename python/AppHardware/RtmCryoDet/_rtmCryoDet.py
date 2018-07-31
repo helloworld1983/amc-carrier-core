@@ -145,7 +145,7 @@ class RtmCryoDet(pr.Device):
             bitOffset    = 0,
             base         = pr.UInt,
             mode         = "RW",
-            hidden       = True,
+            hidden       = False,
         ))   
 
         @self.command(description="Reset RTM CPLD")
