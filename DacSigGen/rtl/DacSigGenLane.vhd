@@ -147,9 +147,6 @@ begin
    AxiDualPortRam_INST : entity work.AxiDualPortRam
       generic map (
          TPD_G        => TPD_G,
-         BRAM_EN_G    => true,
-         REG_EN_G     => true,
-         MODE_G       => "write-first",
          ADDR_WIDTH_G => ADDR_WIDTH_G,
          DATA_WIDTH_G => WIDTH_C,
          INIT_G       => RAM_INIT_C)
