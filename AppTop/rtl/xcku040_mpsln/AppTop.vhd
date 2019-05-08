@@ -486,6 +486,7 @@ begin
          TPD_G           => TPD_G,
          SIM_SPEEDUP_G   => SIM_SPEEDUP_G,
          SIMULATION_G    => SIMULATION_G,
+         MR_LCLS_APP_G   => MR_LCLS_APP_G,
          AXI_BASE_ADDR_G => AXI_CONFIG_C(CORE_INDEX_C).baseAddr,
          JESD_USR_DIV_G  => JESD_USR_DIV_G)
       port map (
