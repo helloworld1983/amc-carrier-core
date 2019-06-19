@@ -50,3 +50,29 @@ AppTop: &AppTop
         stride: 0x10000000
       instantiate: false
     ##################################################
+    Init:
+      class: SequenceCommand
+      at:
+        offset: 0x0
+      description: AppTop Init command
+      sequence:
+        # Power doen AppCore
+        - entry: AppCore/Disable
+          value: 0
+        # GTs reset
+        - entry: AppTopJesd/JesdRx/ResetRxGTs
+          value: 0
+        - entry: AppTopJesd/JesdTx/ResetTxGTs
+          value: 0
+        - entry: usleep
+          value: 1000000
+        # Init the AppCore
+        - entry: AppCore/Init
+          value: 0
+        - entry: usleep
+          value: 500000
+        # Clear the  error counter
+        - entry: AppTopJesd/JesdRx/ClearRxErrors
+          value: 0
+        - entry: AppTopJesd/JesdTx/ClearTxStatus
+          value: 0
