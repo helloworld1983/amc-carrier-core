@@ -2,7 +2,7 @@
 -- File       : AmcCarrierEth.vhd
 -- Company    : SLAC National Accelerator Laboratory
 -- Created    : 2015-09-21
--- Last update: 2018-03-14
+-- Last update: 2019-08-04
 -------------------------------------------------------------------------------
 -- Description: 
 -------------------------------------------------------------------------------
@@ -291,7 +291,8 @@ begin
          SERVER_SIZE_G  => SERVER_SIZE_C,
          SERVER_PORTS_G => SERVER_PORTS_C,
          -- UDP Client Generics
-         CLIENT_EN_G    => true,
+--         CLIENT_EN_G    => true,
+         CLIENT_EN_G    => false,
          CLIENT_SIZE_G  => CLIENT_SIZE_C,
          CLIENT_PORTS_G => CLIENT_PORTS_C,
          -- IPv4/ARP Generics
