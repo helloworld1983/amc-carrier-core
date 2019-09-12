@@ -48,6 +48,7 @@ class TopLevel(pr.Device):
             enableBsa       = False,
             enableMps       = False,
             enableTpgMini   = True,
+            numWaveformBuffers  = 4,
             **kwargs):
         super().__init__(name=name, description=description, **kwargs)
 
@@ -141,7 +142,11 @@ class TopLevel(pr.Device):
             rssiNotInterlaved = rssiNotInterlaved,
             enableBsa         = enableBsa,
             enableMps         = enableMps,
+<<<<<<< HEAD
             enableTpgMini     = enableTpgMini,
+=======
+            numWaveformBuffers= numWaveformBuffers,
+>>>>>>> ff88250... updating SW for WAVEFORM_NUM_LANES_G
         ))
         self.add(appTop.AppTop(
             memBase      = self.srp,
@@ -152,6 +157,7 @@ class TopLevel(pr.Device):
             numSigGen    = numSigGen,
             sizeSigGen   = sizeSigGen,
             modeSigGen   = modeSigGen,
+            numWaveformBuffers = numWaveformBuffers,
         ))
 
         # Define SW trigger command
