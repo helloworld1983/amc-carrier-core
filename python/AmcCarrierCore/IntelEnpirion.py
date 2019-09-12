@@ -66,7 +66,7 @@ class IntelEnpirion(pr.Device):
 
 
     @staticmethod
-    def convLinear(dev, var)
+    def convLinear(dev, var):
         def twosComplement(val, nbits):
             if (val >= 2**(nbits-1)):
                 return (val - 2**nbits)
@@ -76,6 +76,6 @@ class IntelEnpirion(pr.Device):
         val = var.dependencies[0].get(read=False)
         
         Y = (0x07FF & val)
-        N = (0xF100 & val) >> 11
+        N = (0x001F & (val >> 11))
 
         return twosComplement(Y, 11)*2**twosComplement(N, 5)
