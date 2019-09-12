@@ -175,6 +175,10 @@ class AmcCarrierCore(pr.Device):
                 offset =  0x0C000000, 
                 expand =  False
             ))            
+        self.add(amcc.IntelEnpirion(
+            offset       =  0x0D000000,
+            expand       =  False,
+        ))
 
     def writeBlocks(self, **kwargs):
         super().writeBlocks(**kwargs)
