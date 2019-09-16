@@ -142,11 +142,8 @@ class TopLevel(pr.Device):
             rssiNotInterlaved = rssiNotInterlaved,
             enableBsa         = enableBsa,
             enableMps         = enableMps,
-<<<<<<< HEAD
             enableTpgMini     = enableTpgMini,
-=======
             numWaveformBuffers= numWaveformBuffers,
->>>>>>> ff88250... updating SW for WAVEFORM_NUM_LANES_G
         ))
         self.add(appTop.AppTop(
             memBase      = self.srp,
